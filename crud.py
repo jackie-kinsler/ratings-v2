@@ -28,7 +28,7 @@ def create_movie(title = None, overview = None, release_date = None, poster_path
     return movie
 
 def create_rating(user, movie, score):
-    rating  = Rating(score = score, movie_id = movie.movie_id, user_id = user.user_id)
+    rating  = Rating(score = score, movie = movie, user = user)
 
     db.session.add(rating)
     db.session.commit()
