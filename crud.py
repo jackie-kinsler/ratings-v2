@@ -35,6 +35,9 @@ def create_rating(user, movie, score):
 
     return rating
 
+def get_movies():
+    return db.session.query(Movie).all()
+
 
 if __name__ == '__main__':
     from server import app
