@@ -51,7 +51,13 @@ def get_user_by_email(user_email):
     return db.session.query(User).filter(User.email == user_email).first()
 
 def get_password_by_email(user_email):
-    return (db.session.query(User.password).filter(User.email == email).first())[0]
+    if get_user_by_email(user_email):
+        return (db.session.query(User.password).filter(User.email == user_email).first())[0]
+    else:
+        return None
+
+def get_user_id_by_email(user_email):
+    return (db.session.query(User.user_id).filter(User.email == user_email).first())[0]
 
 
 if __name__ == '__main__':

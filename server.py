@@ -66,13 +66,13 @@ def create_account():
 
 @app.route('/log-in')
 def log_in():
-    email = request.form.get('email')
-    password = request.form.get('password')
+    email = request.args.get('email')
+    password = request.args.get('password')
 
-    db_password = crud.get_password_by_email(email)
-
-    if db_password == password: 
+    if crud.get_password_by_email(email) == password: 
         flash('Logged In!')
+        session['user_id'] = crud.get_user_id_by_email(email)
+        print(session)
         return redirect('/')
     else:
         flash('Log-in Failed')
