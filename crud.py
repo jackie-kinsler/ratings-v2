@@ -41,6 +41,12 @@ def get_movies():
 def get_movie_by_id(movie_id):
     return db.session.query(Movie).get(movie_id)
 
+def get_users():
+    return db.session.query(User).all()
+
+def get_user_by_id(user_id):
+    return db.session.query(User).get(user_id)
+
 
 if __name__ == '__main__':
     from server import app
