@@ -47,6 +47,12 @@ def get_users():
 def get_user_by_id(user_id):
     return db.session.query(User).get(user_id)
 
+def get_user_by_email(user_email):
+    return db.session.query(User).filter(User.email == user_email).first()
+
+def get_password_by_email(user_email):
+    return (db.session.query(User.password).filter(User.email == email).first())[0]
+
 
 if __name__ == '__main__':
     from server import app
